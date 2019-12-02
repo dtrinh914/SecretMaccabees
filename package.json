@@ -1,0 +1,15 @@
+{
+  "name": "secretmaccabees",
+  "version": "1.0.0",
+  "description": "A Jewish themed gift exchange web application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1"
+  }
+}
