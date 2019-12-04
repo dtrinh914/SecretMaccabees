@@ -1,8 +1,54 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+h1{
+  background: #66b3ff;
+  color: white;
+  margin-top: 0;
+  padding: 0.8em 0;
 }
 
-a {
-  color: #00B7FF;
+h2{
+  font-size: 1.2em;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Slab', serif;
+}
+
+nav ul{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+nav li{
+  display: inline;
+  font-size: 0.8em;
+}
+
+.container{
+  text-align: center;
+}
+
+
+.deleteBtn{
+  background-color: #ff6666;
+  padding: 0.2em;
+  font-size: 0.5em;
+}
+.person{
+  margin: 10px;
+}
+input{
+  border-radius: 5px;
+  border: 0.5px solid grey;
+}
+button {
+  border: none;
+  color: white;
+  background-color: #66b3ff;
+  padding: 0.8em;
+  border-radius: 8px;
+}
+#formControls{
+  margin:10px;
 }

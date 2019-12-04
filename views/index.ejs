@@ -1,0 +1,35 @@
+<%- include('./partials/header') -%>
+
+  <div class='container'>
+
+      <header>
+        <h1>Secret Maccabees</h1>
+        <h2>The world's first Jewish-themed gift exchange</h2>
+      </header>
+
+      <nav>
+        <ul>
+          <li>Why does this exist?</li>
+          <li>History of the Maccabees</li>
+        </ul>
+      </nav>
+
+      <form  action='/submit' method='POST' >
+        <div id='participants'>
+          <div class='person'>
+            <button class='deleteBtn'>X</button>
+            <input type="text" name='name' placeholder='Name'>
+            <input name='email' type='email' placeholder='Email'>
+          </div>
+        </div>
+
+        <div id='formControls'>
+          <button id='addBtn'>Add Another Person</button>
+          <button id='submitBtn'>Send</button>
+        </div>
+        
+      </form>
+      
+  </div>
+  
+<%- include('./partials/footer')  -%>
