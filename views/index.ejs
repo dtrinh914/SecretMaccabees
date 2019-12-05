@@ -14,20 +14,29 @@
         </ul>
       </nav>
 
-      <form  action='/submit' method='POST' >
-        <div id='participants'>
-          <div class='person'>
-            <button class='deleteBtn'>X</button>
-            <input type="text" name='name' placeholder='Name'>
-            <input name='email' type='email' placeholder='Email'>
-          </div>
-        </div>
+      <form id='participants' action='/submit' method='POST' >
+        <table>
+            <thead>
+              <th>Participants</th>
+              <th>Email</th>
+            </thead>
+            <tr class='person'>
+                <td><input type="text" name='name' placeholder='Name'></td>
+                <td><input name='email' type='email' placeholder='Email'></td>
+            </tr>
+            <tr class='person'>
+                <td><input type="text" name='name' placeholder='Name'></td>
+                <td><input name='email' type='email' placeholder='Email'></td>
+            </tr>
+            <tr class='person'>
+                <td><input type="text" name='name' placeholder='Name'></td>
+                <td><input name='email' type='email' placeholder='Email'></td>
+            </tr>
+        </table>
 
-        <div id='formControls'>
-          <button id='addBtn'>Add Another Person</button>
-          <button id='submitBtn'>Send</button>
-        </div>
-        
+        <button id='addBtn'>Add Another Person</button>
+        <button id='submitBtn'>Send</button>
+
       </form>
       
   </div>

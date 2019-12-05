@@ -1,17 +1,16 @@
 const addBtn = document.querySelector('#addBtn');
-const deleteBtn = document.querySelectorAll('.deleteBtn');
 
 //creates div containing name/email input field for another participant
 function addPerson(){
     const id = ID();
-    let person = document.createElement('div');
-    person.setAttribute('class', 'person');
+    let person = document.createElement('tr');
+    person.setAttribute('class', 'person add');
     person.setAttribute('data-key', id);
-    person.innerHTML = `<button class='deleteBtn'>X</button>
-                        <input type="text" name='name' placeholder='Name'>
-                        <input name='email' type='email' placeholder='Email'>`
-    document.querySelector('#participants').appendChild(person)
-    document.querySelector(`.person[data-key=${id}] .deleteBtn`).addEventListener('click', handleDelete); 
+    person.innerHTML = `<td class='delete'><i class="deleteBtn fas fa-times"></i><input type="text" name='name' placeholder='Name'></td>
+                        <td><input name='email' type='email' placeholder='Email'></td>`
+    document.querySelector('#participants tbody').appendChild(person)
+    const deleteBtn = document.querySelector(`.person[data-key=${id}] .deleteBtn`);
+    deleteBtn.addEventListener('click', handleDelete);
 }
 
 //handling execution of buttons
@@ -22,12 +21,17 @@ function handleAdd(evt){
 
 function handleDelete(evt){
     evt.preventDefault();
-    this.parentElement.remove();
+    const block = this.parentElement.parentElement;
+    block.addEventListener('animationend', handleDeleteAnimation);
+    block.classList.add('dltanimation');
+}
+function handleDeleteAnimation(){
+    this.remove();
 }
 
 //adding event handlers to btns
-deleteBtn.forEach( btn =>{ btn.addEventListener('click', handleDelete)});
 addBtn.addEventListener('click', handleAdd)
+
 
 //function to generate unique ids 
 var ID = function () {
