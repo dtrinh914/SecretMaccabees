@@ -6,7 +6,9 @@ function addPerson(){
     let person = document.createElement('tr');
     person.setAttribute('class', 'person add');
     person.setAttribute('data-key', id);
-    person.innerHTML = `<td class='delete'><i class="deleteBtn fas fa-times"></i><input type="text" name='name' placeholder='Name'></td>
+    person.innerHTML = `<td class='delete'>
+                        <button class='deleteBtn'><i class=" fas fa-times"></i></button>
+                        <input type="text" name='name' placeholder='Name'></td>
                         <td><input name='email' type='email' placeholder='Email'></td>`
     document.querySelector('#participants tbody').appendChild(person)
     const deleteBtn = document.querySelector(`.person[data-key=${id}] .deleteBtn`);

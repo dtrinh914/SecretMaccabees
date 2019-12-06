@@ -14,7 +14,7 @@
         </ul>
       </nav>
 
-      <form id='participants' action='/submit' method='POST' >
+      <form id='participants' class='noselect' action='/submit' method='POST' >
         <table>
             <thead>
               <th>Participants</th>
@@ -34,11 +34,10 @@
             </tr>
         </table>
 
-        <button id='addBtn'>Add Another Person</button>
-        <button id='submitBtn'>Send</button>
+        <button class='frmBtn' id='addBtn'>Add Another Person</button>
+        <button class='frmBtn' id='submitBtn'>Send</button>
 
       </form>
-      
   </div>
   
 <%- include('./partials/footer')  -%>
