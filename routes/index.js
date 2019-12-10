@@ -1,5 +1,5 @@
 const express = require('express');
-const email = require('../email/email');
+const mailer = require('../mailer/mailer');
 const router = express.Router();
 
 /* GET home page. */
@@ -56,7 +56,7 @@ router.post('/submit', function(req,res, next){
   participants.forEach( participant => {
     let gifteeIndex = relationships[participant.id];
     let gifteeName = participants[gifteeIndex].name;
-    email.generateMail(participant.email, gifteeName);
+    mailer.generateMail(participant.email, gifteeName);
   });
 
 });
