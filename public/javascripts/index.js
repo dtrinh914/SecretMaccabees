@@ -1,4 +1,5 @@
 const addBtn = document.querySelector('#addBtn');
+const submitBtn = document.querySelector('#submitBtn');
 
 //creates div containing name/email input field for another participant
 function addPerson(){
@@ -15,24 +16,36 @@ function addPerson(){
     deleteBtn.addEventListener('click', handleDelete);
 }
 
-//handling execution of buttons
+//calls addPerson()
 function handleAdd(evt){
     evt.preventDefault();
-    addPerson();
+    for(let i = 0; i < 5; i++){
+        addPerson();
+    }
 }
 
+//adds an event listener to the wrapping div and adds a class causing it to animate
 function handleDelete(evt){
     evt.preventDefault();
     const block = this.parentElement.parentElement;
     block.addEventListener('animationend', handleDeleteAnimation);
     block.classList.add('dltanimation');
 }
+
+//removes element after animation ends
 function handleDeleteAnimation(){
     this.remove();
 }
 
+// validates form before submitting
+function handleSubmit(evt){
+    evt.preventDefault();
+    alert('Error');
+}
+
 //adding event handlers to btns
-addBtn.addEventListener('click', handleAdd)
+addBtn.addEventListener('click', handleAdd);
+// submitBtn.addEventListener('click', handleSubmit);
 
 
 //function to generate unique ids 

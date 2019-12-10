@@ -2,11 +2,16 @@ h1{
   background: #66b3ff;
   color: white;
   margin-top: 0;
-  padding: 0.8em 0;
+  padding: 0.8rem 0;
+}
+
+h1 i{
+  color: #ffdc73;
+  margin-right: 10px;
 }
 
 h2{
-  font-size: 1.2em;
+  font-size: 1.2rem;
 }
 
 body{
@@ -24,16 +29,26 @@ nav ul{
 }
 nav li{
   display: inline;
-  font-size: 0.8em;
+  font-size: 0.8rem;
 }
 
-.container{
+.top-container{
   text-align: center;
+}
+
+.bottom-container{
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+section{
+  border: 1px solid grey;
 }
 
 .deleteBtn{
   color: #ff6666;
-  font-size: 1em;
+  font-size: 1rem;
   border: none;
   background: none;
   padding: 0;
@@ -42,26 +57,34 @@ nav li{
 
 input{
   border: 0.5px solid grey;
-  padding: 0.5em;
-  margin: 0.2em 0.4em;
+  padding: 0.5rem;
+  margin: 0.2rem;
+  width: 82%;
 }
 
+#participants{
+  padding: 10px;
+  max-width: 700px;
+  margin: 0 auto;
+}
 #participants table{
   margin:0 auto 20px auto;
+  width: 100%
 }
 
 .delete{
   position: relative;
-  right: 6px;
+  right: 8px;
 }
 
 .frmBtn {
   border: none;
   color: white;
   background-color: #66b3ff;
-  padding: 0.8em;
+  padding: 0.5rem;
+  width: 150px;
   border-radius: 8px;
-  outline: none;
+  margin: 0 20px;
 }
 
 .add{
@@ -90,14 +113,4 @@ input{
       opacity: 0;
       transform: translatex(50px);
   }
-}
-
-.noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Opera and Firefox */
 }
