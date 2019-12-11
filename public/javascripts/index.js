@@ -10,7 +10,7 @@ function addPerson(){
     person.innerHTML = `<td class='delete'>
                         <button class='deleteBtn'><i class=" fas fa-times"></i></button>
                         <input type="text" name='name' placeholder='Name'></td>
-                        <td><input name='email' type='email' placeholder='Email'></td>`
+                        <td><input type='email' name='email' placeholder='Email'></td>`
     //appends html to DOM and adds event listener for delete button
     document.querySelector('#participants tbody').appendChild(person)
     const deleteBtn = document.querySelector(`.person[data-key=${id}] .deleteBtn`);
@@ -84,4 +84,31 @@ function areFieldsEmpty(field){
         }
     });
     return empty;
+}
+
+//checks to see if the id belongs to a required field
+function isReq(id){
+    switch(id){
+        case '_req1':
+        case '_req2':
+        case '_req3':
+            return true;
+        default:
+            return false;
+    }
+}
+
+//checks if a row has an empty participant and empty email value and then deletes those rows
+function deleteEmptyRows(){
+    const noName = areFieldsEmpty("input[name='name']");
+    const noEmail = areFieldsEmpty("input[name='email']");
+    let map = {};
+    noName.forEach(id => map[id] = true);
+
+    //if the id is in the noName array + noEmail array and is not a required field, the row is deleted
+    noEmail.forEach(id => {
+        if(map[id] && !isReq(id)){
+            document.querySelector(`.person[data-key=${id}]`).remove();
+        }
+    })
 }
