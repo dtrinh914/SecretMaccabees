@@ -41,7 +41,8 @@ function handleDeleteAnimation(){
 // validates form before submitting
 function handleSubmit(evt){
     evt.preventDefault();
-    alert('Error');
+    deleteEmptyRows();
+    highlightInputs();
 }
 
 //adding event handlers to btns
@@ -111,4 +112,25 @@ function deleteEmptyRows(){
             document.querySelector(`.person[data-key=${id}]`).remove();
         }
     })
+}
+
+//highlights are the required input fields that are empty
+function highlightInputs(){
+    const noName = areFieldsEmpty("input[name='name']");
+    const noEmail = areFieldsEmpty("input[name='email']");
+    
+    noName.forEach(id => highlight(id, 'name'));
+    noEmail.forEach(id => highlight(id, 'email'));
+}
+
+//highlights any input fields that are needed
+function highlight(id, type){
+    const selected = document.querySelector(`.person[data-key=${id}] input[name=${type}]`)
+    selected.classList.add('highlighted');
+}
+
+// Validate email function
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
 }
