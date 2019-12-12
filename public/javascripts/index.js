@@ -47,7 +47,7 @@ function handleSubmit(evt){
     checkEmptyInputs(errorMsgs);
     validateEmailInputs(errorMsgs);
     generateErrorMessage(errorMsgs);
-    
+
     if(errorMsgs.length === 0){
         document.forms['participants'].submit();
     }
@@ -55,13 +55,20 @@ function handleSubmit(evt){
 
 //create an errorSection with a list of errors from an array and append to the body
 function generateErrorMessage(errorArr){
-    let errorSection = document.createElement('section');
-    errorSection.setAttribute('class', 'error-messages');
+    //check to see if errorSection already exist in Html/if not create new element
+    let errorSection = document.querySelector('.error-messages');
+    if(!errorSection){
+        errorSection = document.createElement('section');
+        errorSection.setAttribute('class', 'error-messages');
+    }
+
     let errorLis  = '';
     errorArr.forEach( error => {
         errorLis = errorLis + `<li>${error}</li>`
     });
     errorSection.innerHTML= `<ul>${errorLis}</ul>`;
+
+
     document.querySelector('.bottom-container').appendChild(errorSection);
 }
 
@@ -134,15 +141,23 @@ function deleteEmptyRows(){
     })
 }
 
-//highlights are the required input fields that are empty
+//Validates all input fields to make sure that they are not empty
 function checkEmptyInputs(errorArr){
-    const noName = areFieldsEmpty("input[name='name']");
-    const noEmail = areFieldsEmpty("input[name='email']");
+    let problems = 0;
+    const names = document.querySelectorAll("input[name='name']");
+    const emails = document.querySelectorAll("input[name='email']");
+    const inputs = [...names, ...emails];
     
-    noName.forEach(id => highlight(id, 'name'));
-    noEmail.forEach(id => highlight(id, 'email'));
-    
-    const problems = noName.length + noEmail.length;
+    inputs.forEach(input => {
+        if(isStrEmpty(input.value)){
+            input.classList.add('highlighted');
+            problems++;
+        } else {
+            input.classList.remove('highlighted')
+        }
+        input.setAttribute('aria-required', true);
+    }) 
+
     if(problems > 1){
         errorArr.push('There are multiple empty fields that need to be filled out.');
     }
@@ -151,22 +166,18 @@ function checkEmptyInputs(errorArr){
     }
 }
 
-//highlights any input fields that are needed
-function highlight(id, type){
-    const selected = document.querySelector(`.person[data-key=${id}] input[name=${type}]`)
-    selected.classList.add('highlighted');
-    selected.setAttribute('aria-required', true);
-}
-
 //Validate all email fields and highlights the problem ones
 function validateEmailInputs(errorArr){
     let problems = 0;
     const emails = document.querySelectorAll("input[name='email']");
     emails.forEach( email => {
-        if(!validateEmail(email.value) && !isStrEmpty(email.value)){
+        if(!validateEmail(email.value)){
             email.classList.add('highlighted');
             email.setAttribute('aria-invalid', true);
             problems++;
+        } else {
+            email.classList.remove('highlighted');
+            email.setAttribute('aria-invalid', false);
         }
     })
 
