@@ -41,8 +41,28 @@ function handleDeleteAnimation(){
 // validates form before submitting
 function handleSubmit(evt){
     evt.preventDefault();
+    let errorMsgs = [];
+
     deleteEmptyRows();
-    highlightInputs();
+    checkEmptyInputs(errorMsgs);
+    validateEmailInputs(errorMsgs);
+    generateErrorMessage(errorMsgs);
+    
+    if(errorMsgs.length === 0){
+        document.forms['participants'].submit();
+    }
+}
+
+//create an errorSection with a list of errors from an array and append to the body
+function generateErrorMessage(errorArr){
+    let errorSection = document.createElement('section');
+    errorSection.setAttribute('class', 'error-messages');
+    let errorLis  = '';
+    errorArr.forEach( error => {
+        errorLis = errorLis + `<li>${error}</li>`
+    });
+    errorSection.innerHTML= `<ul>${errorLis}</ul>`;
+    document.querySelector('.bottom-container').appendChild(errorSection);
 }
 
 //adding event handlers to btns
@@ -115,18 +135,47 @@ function deleteEmptyRows(){
 }
 
 //highlights are the required input fields that are empty
-function highlightInputs(){
+function checkEmptyInputs(errorArr){
     const noName = areFieldsEmpty("input[name='name']");
     const noEmail = areFieldsEmpty("input[name='email']");
     
     noName.forEach(id => highlight(id, 'name'));
     noEmail.forEach(id => highlight(id, 'email'));
+    
+    const problems = noName.length + noEmail.length;
+    if(problems > 1){
+        errorArr.push('There are multiple empty fields that need to be filled out.');
+    }
+    else if(problems === 1){
+        errorArr.push('There is an empty field that needs to be filled out.');
+    }
 }
 
 //highlights any input fields that are needed
 function highlight(id, type){
     const selected = document.querySelector(`.person[data-key=${id}] input[name=${type}]`)
     selected.classList.add('highlighted');
+    selected.setAttribute('aria-required', true);
+}
+
+//Validate all email fields and highlights the problem ones
+function validateEmailInputs(errorArr){
+    let problems = 0;
+    const emails = document.querySelectorAll("input[name='email']");
+    emails.forEach( email => {
+        if(!validateEmail(email.value) && !isStrEmpty(email.value)){
+            email.classList.add('highlighted');
+            email.setAttribute('aria-invalid', true);
+            problems++;
+        }
+    })
+
+    if(problems > 1){
+        errorArr.push('There are multiple fields with an invalid email address.');
+    } 
+    else if(problems === 1){
+        errorArr.push('There is a field with an invalid email address.')
+    }
 }
 
 // Validate email function
