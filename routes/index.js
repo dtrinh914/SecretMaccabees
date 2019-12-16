@@ -7,8 +7,11 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
+router.get('/completed', function(req,res, next){
+  res.render('completed');
+})
+
 router.post('/submit', function(req,res, next){
-  res.send('This works');
   // gets user info from client and links their name/email in an object 
   let name = req.body.name, email = req.body.email;
   let participants = [];
@@ -59,6 +62,8 @@ router.post('/submit', function(req,res, next){
     mailer.generateMail(participant.email, gifteeName);
   });
 
+  //redirect user
+  res.redirect('/completed');
 });
 
 

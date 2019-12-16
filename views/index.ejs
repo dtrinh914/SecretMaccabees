@@ -1,32 +1,13 @@
 <%- include('./partials/header') -%>
 
-  
-  <div class='top-container'>
-    <header>
-      <h1><i class="fas fa-star-of-david"></i></i>Secret Maccabees</h1>
-      <h2>The world's first Jewish-themed gift exchange</h2>
-    </header>
-
-    <nav>
-      <ul>
-        <li>History of the Maccabees</li>
-        <li>About</li>
-      </ul>
-    </nav>
-  </div>
-
-  <div class='bottom-container'>
-    <section id='history'>
-      <p>If you'd like to learn more, <a href='https://en.wikipedia.org/wiki/Maccabees'>click here.</a></p>
-    </section>
-
-    <section id='about'>
-        <p>If you have any suggestions or notice any bugs feel free to contact me. You can find the repo <a href='https://github.com/dtrinh914/SecretMaccabees'>here.</a></p>
-    </section>
-
+  <div class='container'>
     
     <form id='participants' action='/submit' method='POST' >
       <h2>Gather the Maccabees</h1>
+      
+      <section class='error-messages'>
+      </section>
+
       <table>
           <thead>
             <th>Participants</th>
@@ -45,9 +26,11 @@
               <td><input type='email' name='email' placeholder='Email' aria-required="true"></td>
           </tr>
       </table>
-
-      <button class='frmBtn' id='addBtn'>Add More Rebels</button>
-      <button class='frmBtn' id='submitBtn'>Send</button>
+      
+      <div class ='form-control'>
+        <button class='Btn' id='addBtn'>Add More Rebels</button>
+        <button class='Btn' id='submitBtn'>Send</button>
+      </div>
     </form>
   </div>
   

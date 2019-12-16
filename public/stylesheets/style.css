@@ -1,8 +1,12 @@
-h1{
+header{
   background: #66b3ff;
+  margin: 0;
+  padding: 10px;
+}
+
+h1{
+  margin: 0;
   color: white;
-  margin-top: 0;
-  padding: 0.8rem 0;
 }
 
 h1 i{
@@ -10,8 +14,11 @@ h1 i{
   margin-right: 10px;
 }
 
-h2{
+header h2{
+  margin: 0;
   font-size: 1.2rem;
+  color: white;
+  text-shadow: 2px 0 black, 0 0.5px black, 0.5px 0 black, 0 0.5px black;
 }
 
 body{
@@ -32,18 +39,32 @@ nav li{
   font-size: 0.8rem;
 }
 
-.top-container{
+header{
   text-align: center;
 }
 
-.bottom-container{
-  max-width: 900px;
+.error-messages{
+  text-align: left;
+  background-color: pink;
+  font-size: 12px;
+}
+
+.error-messages p{
+  padding-top: 10px;
+  padding-left: 10px;
+  margin: 0;
+}
+
+.error-messages ul{
+  margin-top:0;
+  list-style: none;
+  padding-bottom: 10px;
+}
+
+.container{
+  max-width: 700px;
   margin: 0 auto;
   text-align: center;
-}
-
-section{
-  border: 1px solid grey;
 }
 
 .deleteBtn{
@@ -77,14 +98,23 @@ input{
   right: 8px;
 }
 
-.frmBtn {
+.form-control{
+  display: flex;
+  justify-content: space-around;
+}
+
+.Btn {
   border: none;
   color: white;
   background-color: #66b3ff;
   padding: 0.5rem;
   width: 150px;
   border-radius: 8px;
-  margin: 0 20px;
+}
+
+.Btn a, .Btn a:visited, .Btn a:hover {
+  color: white;
+  text-decoration: none;
 }
 
 .add{

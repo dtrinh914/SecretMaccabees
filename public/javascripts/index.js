@@ -57,19 +57,12 @@ function handleSubmit(evt){
 function generateErrorMessage(errorArr){
     //check to see if errorSection already exist in Html/if not create new element
     let errorSection = document.querySelector('.error-messages');
-    if(!errorSection){
-        errorSection = document.createElement('section');
-        errorSection.setAttribute('class', 'error-messages');
-    }
-
     let errorLis  = '';
     errorArr.forEach( error => {
         errorLis = errorLis + `<li>${error}</li>`
     });
-    errorSection.innerHTML= `<ul>${errorLis}</ul>`;
-
-
-    document.querySelector('.bottom-container').appendChild(errorSection);
+    errorSection.innerHTML= `<p>The following is a list of errors that need to be corrected:</p>
+                             <ul>${errorLis}</ul>`;
 }
 
 //adding event handlers to btns
@@ -144,9 +137,7 @@ function deleteEmptyRows(){
 //Validates all input fields to make sure that they are not empty
 function checkEmptyInputs(errorArr){
     let problems = 0;
-    const names = document.querySelectorAll("input[name='name']");
-    const emails = document.querySelectorAll("input[name='email']");
-    const inputs = [...names, ...emails];
+    const inputs = document.querySelectorAll("input");
     
     inputs.forEach(input => {
         if(isStrEmpty(input.value)){
