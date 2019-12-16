@@ -1,8 +1,6 @@
 # SecretMaccabees
 A Jewish-themed gift exchange web application
 
-*Currently a work-in-progress
-
 To install your own local copy:
 1. Clone repo.
 2. Run npm install in the root directory.
